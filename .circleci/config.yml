@@ -16,7 +16,10 @@ jobs:
               pip install coverage coveralls pyyaml
       - python/save-cache
       - run:
-          command: coverage run setup.py test
+          command: |
+              find ~/.local/bin
+              export PATH=${PATH}:~/.local/bin
+              coverage run setup.py test
           name: Tests
       - run:
           name: Coveralls
