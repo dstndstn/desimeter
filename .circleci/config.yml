@@ -42,8 +42,8 @@ jobs:
               # first set up project in coveralls.io, then
               # set this env.var in the circleci build config,
               # https://circleci.com/gh/desihub/desimeter/edit#env-vars
-              echo "COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} bundle exec rspec spec" > .coveralls.yml
-              coveralls
+              #echo "COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} bundle exec rspec spec" > .coveralls.yml
+              COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} coveralls
 
 workflows:
   main:
