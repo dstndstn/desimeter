@@ -18,6 +18,9 @@ jobs:
       - run:
           command: |
               find ~/.local
+              # WTF no coverage executable?!
+              mkdir -p ~/.local/bin
+              cp ~/desimeter/.circleci/coverage ~/.local/bin
               export PATH=${PATH}:~/.local/bin
               coverage run setup.py test
           name: Tests
