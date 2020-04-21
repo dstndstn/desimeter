@@ -3,6 +3,21 @@ version: 2.1
 orbs:
   python: circleci/python@0.2.1
 
+commands:
+  save-cache-bin:
+    description: Save Pip packages to cache (with bin).
+    parameters:
+      key:
+        default: pip
+        description: The cache key to use. The key is immutable.
+        type: string
+    steps:
+    - save_cache:
+        key: << parameters.key >>-{{ checksum "requirements.txt"  }}
+        paths:
+        - /home/circleci/.local/lib/
+        - /home/circleci/.local/bin/
+
 jobs:
   build-and-test:
     executor: python/default
@@ -14,14 +29,14 @@ jobs:
           name: Coverage deps
           command: |
               pip install coverage coveralls pyyaml
-      - python/save-cache
+      - save-cache-bin
       - run:
           command: |
               find ~/.local
               # WTF no coverage executable?!
-              mkdir -p ~/.local/bin
-              cp ~/desimeter/.circleci/coverage ~/.local/bin
-              export PATH=${PATH}:~/.local/bin
+              #mkdir -p ~/.local/bin
+              #cp ~/desimeter/.circleci/coverage ~/.local/bin
+              #export PATH=${PATH}:~/.local/bin
               coverage run setup.py test
           name: Tests
       - run:
