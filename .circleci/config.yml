@@ -17,7 +17,7 @@ jobs:
       - python/save-cache
       - run:
           command: |
-              find ~/.local/bin
+              find ~/.local
               export PATH=${PATH}:~/.local/bin
               coverage run setup.py test
           name: Tests
