@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Coverage deps
           command: |
-              pip install coveralls
+              pip install coveralls pyyaml
       - python/save-cache
       - run:
           command: coverage run setup.py test
@@ -21,8 +21,9 @@ jobs:
       - run:
           name: Coveralls
           command: |
-              # set in the circleci build config,
-              # https://circleci.com/gh/legacysurvey/legacypipe/edit#env-vars
+              # first set up project in coveralls.io, then
+              # set this env.var in the circleci build config,
+              # https://circleci.com/gh/desihub/desimeter/edit#env-vars
               echo "COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} bundle exec rspec spec" > .coveralls.yml
               coveralls
 
