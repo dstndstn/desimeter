@@ -21,6 +21,14 @@ It comprises
 
 See `desimeter/doc/coordinates.rst` for a definition of the coordinate systems.
 
+
+Automated build & testing
+-------------------------
+
+[![Build Status](https://img.shields.io/circleci/project/github/dstndstn/desimeter.svg)](https://circleci.com/gh/dstndstn/desimeter)
+
+[![Coverage Status](https://coveralls.io/repos/github/dstndstn/desimeter/badge.svg?branch=master)](https://coveralls.io/github/dstndstn/desimeter?branch=master)
+
   
 Script Examples
 ---------------
