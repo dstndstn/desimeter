@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Coverage deps
           command: |
-              pip install coveralls pyyaml
+              pip install coverage coveralls pyyaml
       - python/save-cache
       - run:
           command: coverage run setup.py test
